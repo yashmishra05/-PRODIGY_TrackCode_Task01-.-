@@ -1,0 +1,37 @@
+# Visualizing Age and Gender Distribution using Python
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Set theme for better visuals
+sns.set_theme(style="whitegrid")
+
+# Sample dataset
+data = {
+    'Name': ['Aman', 'Priya', 'Ravi', 'Sara', 'John', 'Meena', 'Raj', 'Tina', 'Tom', 'Kavya', 'Nikhil', 'Divya', 'Arjun', 'Sita', 'Alok'],
+    'Age': [22, 23, 22, 21, 24, 23, 22, 25, 21, 23, 24, 21, 25, 22, 26],
+    'Gender': ['Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male', 'Female', 'Male']
+}
+
+df = pd.DataFrame(data)
+
+# Plot histogram for Age distribution
+plt.figure(figsize=(8, 5))
+sns.histplot(df['Age'], bins=5, kde=True, color='skyblue')
+plt.title('Age Distribution of Participants')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.savefig('age_distribution.png')
+plt.show()
+
+# Plot bar chart for Gender distribution
+plt.figure(figsize=(6, 4))
+sns.countplot(x='Gender', data=df, palette='pastel')
+plt.title('Gender Distribution')
+plt.xlabel('Gender')
+plt.ylabel('Count')
+plt.grid(True, axis='y', linestyle='--', alpha=0.7)
+plt.savefig('gender_distribution.png')
+plt.show()
